@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { reservations } from './reservationsData'
 
 const app = express();
 
