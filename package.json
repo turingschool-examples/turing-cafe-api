@@ -1,0 +1,35 @@
+{
+  "name": "turing-cafe-api",
+  "version": "1.0.0",
+  "description": "A back end for the M3 FE mid-mod",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/turingschool-examples/turing-cafe-api.git"
+  },
+  "keywords": [
+    "express",
+    "node",
+    "mod3",
+    "mid",
+    "mod"
+  ],
+  "author": "Leta Keane",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/turingschool-examples/turing-cafe-api/issues"
+  },
+  "homepage": "https://github.com/turingschool-examples/turing-cafe-api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "babel-jest": "^24.8.0",
+    "supertest": "^4.0.2"
+  }
+}
