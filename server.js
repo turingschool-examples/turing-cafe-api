@@ -17,7 +17,7 @@ app.get('/api/v1/reservations', (request, response) => {
 });
 
 app.post('/api/v1/reservations', (request, response) => {
-  const newReservation = {...request.body, id: Date.now()};
+  const newReservation = {...request.body};
 
   for (let requiredParameter of ['name', 'date', 'time', 'number', 'id']) {
     if (!newReservation[requiredParameter]) {
@@ -26,7 +26,7 @@ app.post('/api/v1/reservations', (request, response) => {
       })
     }
   }
-  
+
   app.locals.reservations = [...app.locals.reservations, newReservation];
 
   return response.status(201).json(app.locals.reservations);
