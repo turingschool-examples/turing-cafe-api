@@ -19,17 +19,17 @@ app.get('/api/v1/reservations', (request, response) => {
 app.post('/api/v1/reservations', (request, response) => {
   const newReservation = {...request.body, id: Date.now()};
 
-  for (let requiredParameter of ['name', 'date', 'time', 'number']) {
+  for (let requiredParameter of ['name', 'date', 'time', 'number', 'id']) {
     if (!newReservation[requiredParameter]) {
       return response.status(422).json({
         error: `Expected format { name: <String>, date: <String>, time: <String>, number: <Number> }. You are missing a required parameter of ${requiredParameter}.`
       })
     }
-
-    app.locals.reservations = [...app.locals.reservations, newReservation];
-
-    return response.status(201).json(app.locals.reservations);
   }
+  
+  app.locals.reservations = [...app.locals.reservations, newReservation];
+
+  return response.status(201).json(app.locals.reservations);
 });
 
 app.delete('/api/v1/reservations/:id', (request, response) => {
@@ -46,8 +46,10 @@ app.delete('/api/v1/reservations/:id', (request, response) => {
   app.locals.reservations = updatedReservations;
 
   return response.status(202).json(app.locals.reservations)
-})
+});
 
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on http://localhost:${app.get('port')}!`);
-})
+});
+
+module.exports = app;
