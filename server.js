@@ -1,35 +1,36 @@
 const express = require('express');
 const cors = require('cors');
-const reservations = require('./reservationsData');
-
+// const shortId = require('shortid');
+const reservations = require('./reservationData');
 const app = express();
+
+app.use(express.json());
+app.use(cors());
+
+
+app.set('port', 3001);
 
 app.locals.title = 'Turing Cafe API'
 app.locals.reservations = reservations;
 
-app.use(cors());
-app.use(express.json());
-
-app.set('port', 3001);
-
 app.get('/api/v1/reservations', (request, response) => {
-  return response.status(200).json(app.locals.reservations)
+  return response.json(app.locals.reservations)
 });
 
 app.post('/api/v1/reservations', (request, response) => {
-  const newReservation = {...request.body, id: Date.now()};
+  const { name, date, time, number } = request.body;
 
-  for (let requiredParameter of ['name', 'date', 'time', 'number', 'id']) {
-    if (!newReservation[requiredParameter]) {
-      return response.status(422).json({
-        error: `Expected format { name: <String>, date: <String>, time: <String>, number: <Number> }. You are missing a required parameter of ${requiredParameter}.`
-      })
-    }
+  if (!name || !date || !time || !number ) {
+    return response.status(422).json({
+      error: 'Expected format { name: <String>, date: <String>, time: <String>, number: <Number> }. You are missing a required parameter of name, date, time, or number.'
+    })
   }
-  
+
+  const newReservation = {id: Date.now(), name, date, time, number};
+
   app.locals.reservations = [...app.locals.reservations, newReservation];
 
-  return response.status(201).json(app.locals.reservations);
+  return response.status(201).json(newReservation);
 });
 
 app.delete('/api/v1/reservations/:id', (request, response) => {

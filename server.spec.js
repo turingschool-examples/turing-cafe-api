@@ -30,9 +30,9 @@ describe('API', () => {
   });
 
   describe('POST /api/v1/reservations', () => {
-    it('should return a status of 201 and the updated reservations', async () => {
+    it('should return a status of 201 and the new reservation', async () => {
       const goodReservationBody = { name: 'Jeff', date: '5/6', time: '5:30', number: 5 };
-      const expected = [...app.locals.reservations, {...goodReservationBody, id: 3}]
+      const expected = {...goodReservationBody, id: 3}
       Date.now = jest.fn().mockImplementationOnce(() => 3);
 
       expect(app.locals.reservations.length).toBe(2);
@@ -46,7 +46,7 @@ describe('API', () => {
 
     it('should return an error', async () => {
       const badReservationBody = { name: 'Jeff', time: '5:30', number: 5 };
-      const expected = { error: 'Expected format { name: <String>, date: <String>, time: <String>, number: <Number> }. You are missing a required parameter of date.' };
+      const expected = { error: 'Expected format { name: <String>, date: <String>, time: <String>, number: <Number> }. You are missing a required parameter of name, date, time, or number.' };
 
       expect(app.locals.reservations.length).toBe(2);
 
