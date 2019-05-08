@@ -22,7 +22,7 @@ This app is the back-end server for the Mod 3 FE mid-mod. It is tested with jest
 | url | verb | options | sample response |
 | ----|------|---------|---------------- |
 | `http://localhost:3001/api/v1/reservations` | GET | not needed | Array of all existing reservations: `[{ id: 18907224, name: 'Christie', date: '8/8', time: '7:00', number: 3 }]` |
-| `http://localhost:3001/api/v1/reservations` | POST | Newly created reservation: `{name: <String>, date: <String>, time: <String>, number: <Number>}` | `{ id: 18939837, name: 'Leta', date: '12/3', time: '6:30', number: 2 }` |
+| `http://localhost:3001/api/v1/reservations` | POST | `{name: <String>, date: <String>, time: <String>, number: <Number>}` | Newly created reservation: `{ id: 18939837, name: 'Leta', date: '12/3', time: '6:30', number: 2 }` |
 | `http://localhost:3001/api/v1/reservations/:id` | DELETE | not needed | Array of all remaining reservations: `[{ id: 18907224, name: 'Christie', date: '8/8', time: '7:00', number: 3 }]` |
 
 Note: All of these endpoints will return semantic errors if something is wrong with the request.
