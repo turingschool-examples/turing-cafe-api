@@ -11,7 +11,7 @@ This app is the back-end server for the Mod 3 FE mid-mod. It is tested with jest
 2. Change into the new directory.
     - `cd turing-cafe-api`
 3. Install the dependencies.
-    - `npm install`
+    - `node server.js`
 
 ### Usage
 
