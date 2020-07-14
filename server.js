@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 // const shortId = require('shortid');
-const reservations = require('./reservationData');
+const {reservations, menu} = require('./data');
 const app = express();
 
 app.use(express.json());
@@ -22,7 +22,7 @@ app.post('/api/v1/reservations', (request, response) => {
 
   if (!name || !date || !time || !number ) {
     return response.status(422).json({
-      error: 'Expected format { name: <String>, date: <String>, time: <String>, number: <Number> }. You are missing a required parameter of name, date, time, or number.'
+      error: 'Expected format { name: <String>, date: <String>, time: <String>, number: <Number> }. You are missing a required parameter.'
     })
   }
 
