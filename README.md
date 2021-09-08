@@ -1,3 +1,5 @@
+### This repo is used as an assessment during the course of the Turing modules, if you are viewing this repository outside the context of an assessment, you’re in violation of the Academic Integrity policy you agreed to as a student.
+
 # Turing Cafe API
 
 This app is the back-end server for the Mod 3 FE mid-mod. It is tested with jest and supertest.
